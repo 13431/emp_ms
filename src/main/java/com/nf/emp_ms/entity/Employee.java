@@ -33,7 +33,7 @@ public class Employee {
     @JoinColumn(name = "deptno")
     private Department department;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "mgr")
     private Employee manager;
 
