@@ -20,7 +20,7 @@ public class Department {
     @Column(name = "loc")
     private String location;
 
-    @OneToMany(mappedBy = "department")
+    @OneToMany(mappedBy = "department", cascade = CascadeType.REMOVE)
     private List<Employee> employees = new ArrayList<>();
 
     public Department() {

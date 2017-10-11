@@ -12,10 +12,9 @@ public class Employee {
     @Id
     @GeneratedValue(generator = "bbb")
     @SequenceGenerator(name = "bbb", sequenceName = "seq_emp", allocationSize = 1)
-    @Column(precision = 4)
     private long empno;
 
-    @Column(name = "ename", length = 10, nullable = false)
+    @Column(name = "ename", length = 10)
     private String name;
 
     private String job;
@@ -29,7 +28,7 @@ public class Employee {
     @Temporal(TemporalType.DATE)
     private Date hireDate;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "deptno")
     private Department department;
 
