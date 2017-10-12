@@ -2,6 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>员工列表</title>
     <style>
@@ -22,6 +23,29 @@
     <header>
         <h2>所有员工</h2>
     </header>
+
+    <div style="margin-bottom: 2em;">
+        <form action="/all">
+            <input name="ename" placeholder="请输入姓名..." />
+            <input type="submit" value="按照姓名模糊查询" />
+        </form>
+    </div>
+
+    <div style="margin-bottom: 2em;">
+        <form action="/all">
+            <label>姓名
+                <input name="ename2" size="10" />
+            </label>
+            <label>工资
+                <input name="lowsal" size="5">
+            </label>
+            <label> -&gt;
+                <input name="hisal" size="5">
+            </label>
+
+            <input type="submit" value="组合查询" />
+        </form>
+    </div>
 
     <table>
         <tr>
