@@ -17,4 +17,5 @@ public class GetLoadTest extends BaseTest {
         Employee employee = (Employee) session.load(Employee.class, 7521L);
         System.out.println(employee);
     }
+
 }

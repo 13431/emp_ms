@@ -1,5 +1,7 @@
 package com.nf.emp_ms.entity;
 
+import oracle.jdbc.proxy.annotation.Pre;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -7,6 +9,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "emp")
+@NamedQuery(name = "gongzidayu", query = "from Employee where salary >= :sal")
+@NamedNativeQuery(name = "gongzidayunative", query = "select ename, sal from emp where sal >= :sal")
 public class Employee {
 
     @Id
@@ -143,6 +147,8 @@ public class Employee {
         return "Employee{" +
                 "empno=" + empno +
                 ", name='" + name + '\'' +
+                ", salary=" + salary +
                 '}';
     }
+
 }

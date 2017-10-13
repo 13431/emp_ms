@@ -1,12 +1,22 @@
 package com.nf.emp_ms.entity;
 
 
+import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "dept")
+@NamedQueries(
+        {
+                @NamedQuery(name = "dept_aaa", query = "from Department where deptno = :dn"),
+                @NamedQuery(name = "dept_bbb", query = "from Department where deptno > :dn")
+        }
+)
 public class Department {
 
     @Id
@@ -21,6 +31,8 @@ public class Department {
     private String location;
 
     @OneToMany(mappedBy = "department", cascade = CascadeType.REMOVE)
+    // @Fetch(FetchMode.SUBSELECT)
+    @BatchSize(size = 10)
     private List<Employee> employees = new ArrayList<>();
 
     public Department() {
