@@ -1,6 +1,7 @@
 package com.nf.emp_ms.entity;
 
 import oracle.jdbc.proxy.annotation.Pre;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,6 +12,8 @@ import java.util.List;
 @Table(name = "emp")
 @NamedQuery(name = "gongzidayu", query = "from Employee where salary >= :sal")
 @NamedNativeQuery(name = "gongzidayunative", query = "select ename, sal from emp where sal >= :sal")
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Employee {
 
     @Id
